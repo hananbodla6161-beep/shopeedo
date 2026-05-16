@@ -14,21 +14,20 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    # Node.js environment setup karna
     - name: Setup Node.js Environment
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
-    # Project dependencies install karna
     - name: Install Project Dependencies
       run: npm install
 
-    # Phase A: Linting Check
     - name: Run Linter Scan
       run: |
         echo "Executing production quality checks..."
 
-    # Phase B: Testing Execution
+    # ENVIRONMENT FIXED FOR CI/CD GREEN PASS
     - name: Run Unit Test Suite
-      run: npm test -- --watchAll=false
+      env:
+        CI: true
+      run: npm test
